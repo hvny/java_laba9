@@ -13,13 +13,8 @@ public class TableCreator {
     private static final String PASSWORD = "8631";
 
     public static void createTable(Class<?> clazz) {
-        if (!clazz.isAnnotationPresent(Table.class)) {
-            System.out.println("Класс " + clazz.getName() + " не аннотирован @Table");
-            return;
-        }
-
         Table table = clazz.getAnnotation(Table.class);
-        StringBuilder sql = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+        StringBuilder sql = new StringBuilder("CREATE TABLE IF NOT EXISTS ");           //создание sql-запроса
         sql.append(table.title()).append(" (");
 
         Field[] fields = clazz.getDeclaredFields();
@@ -31,16 +26,13 @@ public class TableCreator {
                 if (column.unique()) {
                     sql.append(" UNIQUE");
                 }
-
                 sql.append(", ");
             }
         }
 
-        // Удаляем последнюю запятую и пробел
         sql.setLength(sql.length() - 2);
         sql.append(");");
 
-        // Выполнение SQL запроса
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql.toString());

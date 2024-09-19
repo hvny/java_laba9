@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class EntityManager {
-
     private static final String URL = "jdbc:postgresql://localhost:5432/java_db";
     private static final String USER = "postgres";
     private static final String PASSWORD = "8631";
@@ -64,7 +63,7 @@ public class EntityManager {
 
         } catch (SQLException e) {
             if (e.getSQLState().equals("23505")) { // Код ошибки для уникального ограничения
-                System.out.println("Ошибка: объект с таким id уже существует.");
+                System.out.println("Объект " + obj +  " уже есть в таблице.");
             } else {
                 e.printStackTrace();
             }
