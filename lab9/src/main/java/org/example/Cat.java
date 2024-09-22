@@ -1,30 +1,29 @@
 package org.example;
 
-@Table(title = "cats")
+import org.example.annotations.Column;
+import org.example.annotations.Table;
+
+@Table(title = "animals")
 public class Cat {
-    @Column(name = "id", type = "INTEGER", unique = true)
+    @Column(name = "id", type = "INTEGER PRIMARY KEY AUTOINCREMENT")
     private int id;
 
-    @Column(name = "name", type = "VARCHAR(100)")
+    @Column(name = "name", type = "TEXT")
     private String name;
 
     @Column(name = "age", type = "INTEGER")
     private int age;
 
-    @Column(name = "gender", type = "VARCHAR(10)")
+    @Column(name = "gender", type = "TEXT")
     private Gender gender;
 
-    public Cat(int id, String name, int age, Gender gender) {
-        this.id = id;
+    public Cat(String name, int age, Gender gender) {
         this.name = name;
         this.age = age;
         this.gender = gender;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    // Убираем сеттер для id, чтобы значение устанавливалось автоматически
     public void setName(String name) {
         this.name = name;
     }
@@ -39,10 +38,9 @@ public class Cat {
 
     public String toString() {
         return "Cat{" +
-                "ID=" + id +
-                ", Name='" + name + '\'' +
+                " Name='" + name + '\'' +
                 ", Age=" + age +
                 ", gender=" + gender +
-                '}';
+                " }";
     }
 }
