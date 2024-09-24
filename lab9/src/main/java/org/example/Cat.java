@@ -3,7 +3,7 @@ package org.example;
 import org.example.annotations.Column;
 import org.example.annotations.Table;
 
-@Table(title = "animals")
+@Table(title = "cat")
 public class Cat {
     @Column(name = "id", type = "INTEGER PRIMARY KEY AUTOINCREMENT")
     private int id;
@@ -14,7 +14,7 @@ public class Cat {
     @Column(name = "age", type = "INTEGER")
     private int age;
 
-    @Column(name = "gender", type = "TEXT")
+    //@Column(name = "gender", type = "TEXT")
     private Gender gender;
 
     public Cat(String name, int age, Gender gender) {

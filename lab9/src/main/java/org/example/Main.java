@@ -8,9 +8,9 @@ public class Main {
         Gender female = Gender.FEMALE;
 
         Cat[] cats = {
-                new Cat("Barsik", 2, male),
-                new Cat("Murzik", 1, male),
-                new Cat("Murka", 3, female),
+                new Cat("CAT1", 2, male),
+                new Cat("CAT2", 1, male),
+                new Cat("CAT3", 3, female),
 
         };
         
